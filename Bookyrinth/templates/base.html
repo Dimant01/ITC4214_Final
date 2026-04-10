@@ -1,0 +1,81 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Bookirynth{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <!-- LEFT SIDE (LOGO) -->
+    <div class="logo">
+        <a class="logo-link" href="{% url 'home' %}">
+            <img class="logo-image" src="{% static 'images/logo.png' %}" alt="Bookirynth Logo">
+        </a>
+    </div>
+
+    <!-- RIGHT SIDE (NAVIGATION) -->
+     {% comment %}
+    <nav class="main-nav">
+        <ul class="nav-list">
+
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'home' %}">Home</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link cart-link" href="{% url 'cart' %}">
+                    🛒
+                </a>
+            </li>
+
+            {% if user.is_authenticated %}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                </li>
+
+                {% if user.is_staff %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'stock' %}">Stock</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'users' %}">Users</a>
+                    </li>
+                {% endif %}
+
+            {% else %}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Login / Register</a>
+                </li>
+
+            {% endif %}
+
+        </ul>
+    </nav>
+{% endcomment %}
+</header>
+
+
+<main class="main-content">
+    {% block content %}
+    {% endblock %}
+</main>
+
+<footer class="footer">
+    <p>© 2026 Bookyrinth</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+/* --- Reset some default styles --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* --- Page background --- */
+body {
+    background-color: #fff;
+}
+
+/* --- Navbar --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #603914;
+    color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* --- Logo --- */
+.logo-link {
+    text-decoration: none;
+}
+
+.logo-image {
+    height: 50px;
+    width: auto;
+    display: block;
+}
+
+/* --- Navigation --- */
+.main-nav {}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    align-items: center;
+}
+
+.nav-item {}
+
+.nav-link {
+    text-decoration: none;
+    color: #feca0d;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #fff;
+}
+
+/* --- Cart icon --- */
+.cart-link {
+    font-size: 20px;
+}
+
+/* --- Main content area --- */
+.main-content {
+    padding: 20px 40px;
+}
+
+/* --- Footer --- */
+.footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #603914;
+    color: #feca0d;
+    margin-top: 30px;
+}
