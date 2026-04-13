@@ -1,0 +1,237 @@
+/* GRID LAYOUT */
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
+    gap: 2%;
+    padding: 3%;
+    
+}
+
+/* BOOK CARD */
+.book-card {
+    background: rgb(255, 255, 255);
+    border-radius: 2%;
+    overflow: hidden;
+    box-shadow: 0 0.5% 1.5% rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+}
+
+/* hover effect */
+.book-card:hover {
+    transform: translateY(-2%);
+}
+
+/* IMAGE */
+.book-image {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.book-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* INFO */
+.book-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+/* TITLE */
+.book-title {
+    font-size: 120%;
+    margin: 0;
+    color: #603914;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* AUTHOR */
+.book-author {
+    font-size: 90%;
+    color: #777;
+}
+
+/* PRICE */
+.book-price {
+    font-weight: bold;
+    margin-top: 5%;
+    color: #000;
+}
+
+/* BUTTON */
+.btn-cart, .btn-filter {
+    width: 100%;
+    padding: 4% 5%;
+    margin-top: 5%;
+
+    background: linear-gradient(135deg, #feca0d, #ffd84d);
+    color: #603914;
+
+    border: none;
+    border-radius: 8%;
+
+    font-weight: bold;
+    font-size: 100%;
+    letter-spacing: 0.5px;
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+    box-shadow: 0 0.5% 1.2% rgba(0, 0, 0, 0.15);
+}
+
+/* hover */
+.btn-cart:hover, .btn-filter:hover {
+    background: linear-gradient(135deg, #ffd84d, #feca0d);
+    transform: translateY(-2%);
+    box-shadow: 0 0.8% 1.5% rgba(0, 0, 0, 0.2);
+}
+
+/* active */
+.btn-cart:active, .btn-filter:active {
+    transform: translateY(0%);
+    box-shadow: 0 0.3% 0.8% rgba(0, 0, 0, 0.15);
+}
+
+.filter-box {
+    background: #603914;
+    padding: 2%;
+    margin: 2%;
+    border-radius: 1%;
+    box-shadow: 0 0.5% 1.5% rgba(0,0,0,0.1);
+}
+
+.filter-section {
+    margin-bottom: 1.5%;
+}
+
+.catalog-layout {
+    display: flex;
+}
+
+/* SIDEBAR */
+
+.filter-sidebar {
+    width: 20%;
+    background: white;
+    padding: 2%;
+    box-shadow: 0 0.5% 1.5% rgba(0,0,0,0.1);
+}
+
+/* MAIN CONTENT */
+
+.catalog-content {
+    width: 80%;
+}
+
+/* FILTER SECTIONS */
+
+.filter-section {
+    margin-bottom: 10%;
+}
+
+.filter-section h4 {
+    margin-bottom: 5%;
+}
+
+/* MOBILE FILTER BUTTON */
+
+.filter-toggle {
+    display: none;
+}
+
+@media (max-width: 900px) {
+
+    .catalog-layout {
+        flex-direction: column;
+    }
+
+    .filter-sidebar {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        width: 70%;
+        height: 100%;
+        background: white;
+        z-index: 1000;
+        transition: left 0.3s ease;
+
+        overflow-y:auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .filter-sidebar.active {
+        left: 0;
+    }
+
+    .catalog-content {
+        width: 100%;
+    }
+
+    .filter-toggle {
+        display: block;
+        margin: 2%;
+        padding: 2% 4%;
+        background: #feca0d;
+        border: none;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+}
+
+.global-search-wrapper{
+    display:flex;
+    justify-content:center;
+    margin:2% 0;
+}
+
+/* the actual search bar */
+.global-search-form{
+    display:flex;
+    width:50%;
+    min-width:300px;
+    box-shadow:0 0.5% 1.5% rgba(0,0,0,0.15);
+    border-radius:999px;
+    overflow:hidden;
+    border:2px solid black;
+}
+
+/* input */
+.global-search-form input{
+    flex:1;
+    padding:2%;
+    border:none;
+    outline:none;
+    font-size:100%;
+}
+
+/* button */
+.global-search-form button{
+    padding:0 4%;
+    border:none;
+    background:#feca0d;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.global-search-form button:hover{
+    background:#ffd84d;
+}

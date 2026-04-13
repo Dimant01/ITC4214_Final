@@ -34,7 +34,6 @@ body {
 }
 
 /* --- Navigation --- */
-.main-nav {}
 
 .nav-list {
     display: flex;
@@ -42,8 +41,6 @@ body {
     gap: 25px;
     align-items: center;
 }
-
-.nav-item {}
 
 .nav-link {
     text-decoration: none;
@@ -64,6 +61,7 @@ body {
 /* --- Main content area --- */
 .main-content {
     padding: 20px 40px;
+    
 }
 
 /* --- Footer --- */
@@ -72,5 +70,18 @@ body {
     padding: 15px;
     background-color: #603914;
     color: #feca0d;
-    margin-top: 30px;
+    margin-top: auto;
 }
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+

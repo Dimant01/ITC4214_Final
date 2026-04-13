@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Book Catalogue - Bookirynth{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/filters.js' %}" defer></script>
+{% endblock %}
+
+{% block content %}
+
+<!-- SEARCH BAR -->
+<div class="global-search-wrapper">
+
+    <form method="get" class="global-search-form">
+
+        <input
+            type="text"
+            name="search"
+            placeholder="Search books by title, author or ISBN..."
+            value="{{ search_query|default:'' }}"
+        >
+
+        <button type="submit">Search</button>
+
+    </form>
+
+</div>
+
+<div class="catalog-layout">
+
+    <!-- FILTER SIDEBAR -->
+    <aside class="filter-sidebar" id="filterSidebar">
+
+        <form method="get" class="filter-box">
+
+            <!-- CATEGORY FILTER -->
+            <div class="filter-section">
+                <h4>Categories</h4>
+
+                {% for category in categories %}
+                <label>
+                    <input
+                        type="checkbox"
+                        name="category"
+                        value="{{ category.id }}"
+                        {% if category.id|stringformat:"s" in selected_categories %}checked{% endif %}
+                    >
+                    {{ category.name }}
+                </label>
+                <br>
+                {% endfor %}
+
+            </div>
+
+            <!-- TAG FILTER -->
+            <div class="filter-section">
+                <h4>Tags</h4>
+
+                {% for tag in tags %}
+                <label>
+                    <input
+                        type="checkbox"
+                        name="tag"
+                        value="{{ tag.id }}"
+                        {% if tag.id|stringformat:"s" in selected_tags %}checked{% endif %}
+                    >
+                    {{ tag.name }}
+                </label>
+                <br>
+                {% endfor %}
+
+            </div>
+
+            <button type="submit" class="btn-filter">Apply Filters</button>
+
+        </form>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="catalog-content">
+
+        <!-- MOBILE FILTER BUTTON -->
+        <button class="filter-toggle" onclick="toggleFilters()">
+            Filters
+        </button>
+
+        <div class="book-grid">
+
+            {% for book in books %}
+            <div class="book-card">
+
+                <!-- Cover -->
+                <div class="book-image">
+                    {% if book.image %}
+                        <img src="{{ book.image.url }}" alt="{{ book.title }}">
+                    {% else %}
+                        <img src="{% static 'images/no-cover.png' %}" alt="No cover">
+                    {% endif %}
+                </div>
+
+                <!-- Info -->
+                <div class="book-info">
+                    <h3 class="book-title">{{ book.title }}</h3>
+                    <p class="book-author">by {{ book.author }}</p>
+
+                    <p class="book-price">€{{ book.price }}</p>
+
+                    <!-- Add to cart -->
+                    <form method="post" action="{% url 'add_to_cart' book.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-cart">
+                            Add to Cart
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+            {% endfor %}
+
+        </div>
+
+    </main>
+
+</div>
+
+{% endblock %}

@@ -4,13 +4,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Bookirynth{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% block extra_css %}{% endblock %}
+    {% block extra_js %}{% endblock %}
 </head>
 
 <body>
-
+<div class="page-wrapper">
 <header class="navbar">
 
     <!-- LEFT SIDE (LOGO) -->
@@ -76,6 +78,7 @@
 <footer class="footer">
     <p>© 2026 Bookyrinth</p>
 </footer>
+</div>
 
 </body>
 </html>

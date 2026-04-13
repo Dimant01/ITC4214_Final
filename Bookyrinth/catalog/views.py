@@ -1,5 +1,2 @@
-from django.shortcuts import render
+from django.shortcuts import redirect
 
-# Create your views here.
-def book_list(request):
-    return render(request, 'catalog/book_list.html')
