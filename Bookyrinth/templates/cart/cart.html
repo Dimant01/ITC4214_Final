@@ -31,7 +31,23 @@
         <p>by {{ item.book.author }}</p>
 
         <p>Price: €{{ item.book.price }}</p>
-        <p>Quantity: {{ item.quantity }}</p>
+        <p>Quantity: </p>
+        
+        <div class="cart-quantity">
+
+            <form method="post" action="{% url 'decrease_quantity' item.id %}">
+                {% csrf_token %}
+                <button type="submit" class="qty-btn">−</button>
+            </form>
+
+            <span class="qty-number">{{ item.quantity }}</span>
+
+            <form method="post" action="{% url 'increase_quantity' item.id %}">
+                {% csrf_token %}
+                <button type="submit" class="qty-btn">+</button>
+            </form>
+
+        </div>
 
         <p>Subtotal: €{{ item.subtotal }}</p>
     </div>
@@ -54,5 +70,21 @@
 <p>Your cart is empty.</p>
 
 {% endif %}
+
+<div class="cart-actions">
+
+    <a href="{% url 'home' %}" class="btn-continue">
+        Continue Shopping
+    </a>
+    
+    {% if items %}
+
+    <a href="{% url 'checkout' %}" class="btn-checkout">
+        Proceed to Payment
+    </a>
+    
+    {% endif %}
+</div>
+
 
 {% endblock %}

@@ -23,6 +23,17 @@
     </div>
 
     <!-- RIGHT SIDE (NAVIGATION) -->
+     <nav class="nav-right">
+
+        <a href="{% url 'cart' %}" class="cart-icon">
+            <span class="cart-symbol">🛒</span>
+
+            {% if cart_count > 0 %}
+                <span class="cart-badge">{{ cart_count }}</span>
+            {% endif %}
+        </a>
+
+    </nav>
      {% comment %}
     <nav class="main-nav">
         <ul class="nav-list">
