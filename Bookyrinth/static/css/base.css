@@ -87,6 +87,7 @@ html, body {
 .nav-right {
     display: flex;
     align-items: center;
+    gap: 25px; /* clean spacing between cart and burger */
 }
 
 /* Cart Icon */
@@ -95,7 +96,6 @@ html, body {
     display: inline-block;
     font-size: 162.5%; /* 26px assuming base 16px */
     text-decoration: none;
-    margin-left: 5%;
 }
 
 /* notification circle */
@@ -130,4 +130,52 @@ html, body {
     0% { transform: scale(0.7); }
     50% { transform: scale(1.2); }
     100% { transform: scale(1); }
+}
+
+/* BURGER MENU WRAPPER */
+.burger-menu {
+    position: relative;
+}
+
+/* BURGER BUTTON */
+.burger-button {
+    background: none;
+    border: none;
+    font-size: 200%;
+    cursor: pointer;
+    color: #feca0d;
+}
+
+/* DROPDOWN (hidden by default) */
+.burger-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 120%;
+
+    background: #fff;
+    border-radius: 8%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+
+    min-width: 150px;
+    overflow: hidden;
+    z-index: 999;
+}
+
+/* SHOW ON ACTIVE */
+.burger-menu.active .burger-dropdown {
+    display: block;
+}
+
+/* LINKS */
+.burger-link {
+    display: block;
+    padding: 10%;
+    text-decoration: none;
+    color: #603914;
+    font-weight: bold;
+}
+
+.burger-link:hover {
+    background: #feca0d;
 }

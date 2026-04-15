@@ -1,11 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Checkout{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/checkout.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/cardDetails.js' %}" defer></script>
+{% endblock %}
+
+{% block content %}
+
 <h1>Checkout</h1>
 
-<p>Total: €{{ total }}</p>
+<!-- OUTSIDE FORM: ORDER SUMMARY -->
+<div class="checkout-container">
 
-<form method="post">
+    <div class="order-summary">
+        <h2>Order Summary</h2>
+
+        {% for item in items %}
+        <div class="summary-item">
+            <span>{{ item.book.title }} × {{ item.quantity }}</span>
+            <span>€{{ item.subtotal }}</span>
+        </div>
+        {% endfor %}
+
+        <hr>
+
+        <div class="summary-total">
+            <strong>Total:</strong>
+            <strong>€{{ total }}</strong>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- SINGLE FORM ONLY -->
+<form method="post" class="checkout-form">
     {% csrf_token %}
-    <button type="submit">Confirm Payment</button>
-    <a href="{% url 'cancel_payment' %}" class="btn-cancel">
-    Cancel Payment
-    </a>
+
+    <h2>Delivery Details</h2>
+
+    <div class="form-group">
+        {{ form.address.label_tag }}
+        {{ form.address }}
+    </div>
+
+    <div class="form-group">
+        {{ form.city.label_tag }}
+        {{ form.city }}
+    </div>
+
+    <div class="form-group">
+        {{ form.postal_code.label_tag }}
+        {{ form.postal_code }}
+    </div>
+
+    <hr>
+
+    <h2>Payment Method</h2>
+
+    <div class="form-group">
+        {{ form.payment_method }}
+    </div>
+
+    <div id="card-details">
+
+        <h3>Card Details</h3>
+
+        <div class="form-group">
+            <label for="{{ form.card_number.id_for_label }}">Card Number</label>
+            {{ form.card_number }}
+            {{ form.card_number.errors }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.expiry.id_for_label }}">Expiry Date</label>
+            {{ form.expiry }}
+            {{ form.expiry.errors }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.cvv.id_for_label }}">CVV</label>
+            {{ form.cvv }}
+            {{ form.cvv.errors }}
+        </div>
+
+    </div>
+
+    <div class="checkout-actions">
+        <a href="{% url 'cancel_payment' %}" class="btn-cancel">Cancel</a>
+        <button type="submit" class="btn-confirm">Confirm Payment</button>
+    </div>
 </form>
+
+{% endblock %}

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Bookirynth{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <script src="{% static 'js/burgerMenu.js' %}" defer></script>
     {% block extra_css %}{% endblock %}
     {% block extra_js %}{% endblock %}
 </head>
@@ -33,51 +34,37 @@
             {% endif %}
         </a>
 
-    </nav>
-     {% comment %}
-    <nav class="main-nav">
-        <ul class="nav-list">
+    <!-- BURGER MENU -->
+    <div class="burger-menu">
 
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'home' %}">Home</a>
-            </li>
+        <button class="burger-button" type="button">
+            ☰
+        </button>
 
-            <li class="nav-item">
-                <a class="nav-link cart-link" href="{% url 'cart' %}">
-                    🛒
-                </a>
-            </li>
+        <div class="burger-dropdown">
 
             {% if user.is_authenticated %}
 
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'profile' %}">Profile</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-                </li>
-
+                <a href="{% url 'logout' %}" class="burger-link">
+                    Logout
+                </a>
+{% comment %}
                 {% if user.is_staff %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'stock' %}">Stock</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'users' %}">Users</a>
-                    </li>
+                    <a href="{% url 'stock' %}" class="burger-link">Stock</a>
+                    <a href="{% url 'users' %}" class="burger-link">Users</a>
                 {% endif %}
-
+{% endcomment %}
             {% else %}
 
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'login' %}">Login / Register</a>
-                </li>
+                <a href="{% url 'login' %}" class="burger-link">Login</a>
+                <a href="{% url 'register' %}" class="burger-link">Register</a>
 
             {% endif %}
 
-        </ul>
-    </nav>
-{% endcomment %}
+        </div>
+    </div>
+
+</nav>
 </header>
 
 
