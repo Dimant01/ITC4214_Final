@@ -48,12 +48,23 @@
                 <a href="{% url 'logout' %}" class="burger-link">
                     Logout
                 </a>
-{% comment %}
+
+                <a href="{% url 'profile' %}" class="burger-link">
+                    My Profile
+                </a>
+
                 {% if user.is_staff %}
-                    <a href="{% url 'stock' %}" class="burger-link">Stock</a>
-                    <a href="{% url 'users' %}" class="burger-link">Users</a>
+                    <a href="{% url 'manager_catalog' %}" class="burger-link">
+                        Manage Catalog
+                    </a>
+                    
+                    <a href="{% url 'user_management' %}" class="burger-link">
+                        Manage Users
+                    </a>
+                   
                 {% endif %}
-{% endcomment %}
+
+
             {% else %}
 
                 <a href="{% url 'login' %}" class="burger-link">Login</a>
@@ -65,10 +76,21 @@
     </div>
 
 </nav>
+
 </header>
 
 
 <main class="main-content">
+    {% if messages %}
+        <div class="messages-container">
+            {% for message in messages %}
+            <div class="message {{ message.tags }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
     {% block content %}
     {% endblock %}
 </main>

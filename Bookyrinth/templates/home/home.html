@@ -82,7 +82,6 @@
 
     </aside>
 
-
     <!-- MAIN CONTENT -->
     <main class="catalog-content">
 
@@ -94,34 +93,45 @@
         <div class="book-grid">
 
             {% for book in books %}
-            <div class="book-card">
 
-                <!-- Cover -->
-                <div class="book-image">
-                    {% if book.image %}
-                        <img src="{{ book.image.url }}" alt="{{ book.title }}">
-                    {% else %}
-                        <img src="{% static 'images/no-cover.png' %}" alt="No cover">
-                    {% endif %}
+            <!-- CLICKABLE CARD -->
+            <a href="{% url 'book_detail' book.id %}" class="book-card-link">
+
+                <div class="book-card">
+
+                    <!-- Cover -->
+                    <div class="book-image">
+                        {% if book.image %}
+                            <img src="{{ book.image.url }}" alt="{{ book.title }}">
+                        {% else %}
+                            <img src="{% static 'images/no-cover.png' %}" alt="No cover">
+                        {% endif %}
+                    </div>
+
+                    <!-- Info -->
+                    <div class="book-info">
+                        <h3 class="book-title">{{ book.title }}</h3>
+                        <p class="book-author">by {{ book.author }}</p>
+
+                        <p class="book-price">€{{ book.price }}</p>
+
+                        <!-- Add to cart -->
+                        {% if book.stock > 0 %}
+                            <form method="post" action="{% url 'add_to_cart' book.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn-cart">
+                                    Add to Cart
+                                </button>
+                            </form>
+                        {% else %}
+                            <span class="out-of-stock">Out of stock</span>
+                        {% endif %}
+                    </div>
+
                 </div>
 
-                <!-- Info -->
-                <div class="book-info">
-                    <h3 class="book-title">{{ book.title }}</h3>
-                    <p class="book-author">by {{ book.author }}</p>
+            </a>
 
-                    <p class="book-price">€{{ book.price }}</p>
-
-                    <!-- Add to cart -->
-                    <form method="post" action="{% url 'add_to_cart' book.id %}">
-                        {% csrf_token %}
-                        <button type="submit" class="btn-cart">
-                            Add to Cart
-                        </button>
-                    </form>
-                </div>
-
-            </div>
             {% endfor %}
 
         </div>

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}User Management{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/user_management.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<h1>User Management</h1>
+
+<table class="user-table">
+
+<thead>
+<tr>
+<th>Username</th>
+<th>Email</th>
+<th>Status</th>
+<th>Actions</th>
+</tr>
+</thead>
+
+<tbody>
+
+{% for u in users %}
+<tr>
+
+<td>{{ u.username }}</td>
+<td>{{ u.email }}</td>
+
+<td>
+    {% if u.is_staff %}
+        Manager
+    {% else %}
+        Client
+    {% endif %}
+</td>
+
+<td class="user-actions">
+
+    {% if not u.is_staff %}
+        <a href="{% url 'promote_user' u.id %}" class="user-action user-promote">
+            Promote
+        </a>
+    {% endif %}
+
+    {% if not u.is_superuser %}
+        <a href="{% url 'delete_user' u.id %}" class="user-action user-delete">
+            Delete
+        </a>
+    {% endif %}
+
+</td>
+
+</tr>
+{% endfor %}
+
+</tbody>
+</table>
+
+{% endblock %}

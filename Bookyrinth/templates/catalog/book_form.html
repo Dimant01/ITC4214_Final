@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Book Form{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/book_form.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="book-form-container">
+
+<h1 class="book-form-title">Book Editor</h1>
+
+<form method="post" enctype="multipart/form-data" class="book-form">
+
+{% csrf_token %}
+
+{{ form.as_p }}
+
+<button type="submit" class="book-submit">
+Save Book
+</button>
+
+</form>
+
+</div>
+{% endblock %}

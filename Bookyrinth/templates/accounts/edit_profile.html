@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Edit Profile{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/edit_profile.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/profile_calendar.js' %}" defer></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="profile-container">
+
+    <h1>Edit Profile</h1>
+
+    <form method="post" class="profile-card">
+        {% csrf_token %}
+
+        {% if form.errors %}
+            <div class="form-errors">
+                {{ form.errors }}
+            </div>
+        {% endif %}
+
+        <div>
+            <label>Bio</label>
+            {{ form.bio }}
+        </div>
+
+        <div>
+            <label>Location</label>
+            {{ form.location }}
+        </div>
+
+        <div>
+            <label>Birth Date</label>
+            {{ form.birth_date }}
+        </div>
+
+        <button type="submit" class="btn-save">Save Changes</button>
+
+    </form>
+
+    <a href="{% url 'profile' %}" class="btn-cancel">
+        Cancel
+    </a>
+
+
+</div>
+
+
+
+{% endblock %}

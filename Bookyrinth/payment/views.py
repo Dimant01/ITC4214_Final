@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from cart.models import Cart
+from cart.models import Cart, Book
 from .forms import CheckoutForm
+from django.db import transaction
+from django.contrib import messages
+from accounts.models import UserActivity
 
 #Create your views here
 
@@ -19,19 +22,41 @@ def checkout(request):
         form = CheckoutForm(request.POST)
 
         if form.is_valid():
-            data = form.cleaned_data
 
-            # Example: extracted data
-            address = data["address"]
-            city = data["city"]
-            postal_code = data["postal_code"]
-            payment_method = data["payment_method"]
+            with transaction.atomic():
 
-            # simulate payment
-            print(address, city, postal_code, payment_method)
+                # 1. STOCK VALIDATION
+                for item in items:
+                    if item.quantity > item.book.stock:
+                        messages.error(
+                            request,
+                            f"Not enough stock for '{item.book.title}'. Please update your cart."
+                        )
+                        return redirect('cart')
 
-            cart.items.all().delete()
+                # 2. REDUCE STOCK
+                for item in items:
+                    book = item.book
+                    book.stock -= item.quantity
+                    book.save()
+
+                # 3. SUCCESS MESSAGE
+                messages.success(request, "Payment successful! Your order has been placed.")
+
+                # 4. CLEAR CART
+                cart.items.all().delete()
+
+                for item in items:
+                    UserActivity.objects.create(
+                    user=request.user,
+                    book=item.book,
+                    activity_type="purchase"
+                )
+
             return redirect('payment_success')
+
+        else:
+            messages.error(request, "Please correct the errors in the form.")
 
     else:
         form = CheckoutForm()

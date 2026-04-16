@@ -1,0 +1,182 @@
+/* ========================= */
+/* PAGE CONTAINER            */
+/* ========================= */
+
+.profile-container {
+    max-width: 70%;
+    margin: 4% auto;
+    padding: 0 2%;
+}
+
+/* PAGE TITLE */
+.page-title {
+    text-align: center;
+    margin-bottom: 3%;
+    color: #603914;
+    font-size: 200%;
+}
+
+/* ========================= */
+/* PROFILE CARD             */
+/* ========================= */
+
+.profile-card {
+    background: #fff;
+    padding: 5%;
+    border-radius: 2%;
+    box-shadow: 0 0.5% 2% rgba(0,0,0,0.12);
+    transition: transform 0.2s ease;
+}
+
+.profile-card:hover {
+    transform: translateY(-1%);
+}
+
+/* PROFILE FIELD ROW */
+.profile-field {
+    margin: 2% 0;
+    font-size: 110%;
+    color: #333;
+    line-height: 1.5;
+}
+/* FIELD LABEL */
+.field-label {
+    color: #603914;
+    font-weight: bold;
+    display: inline-block;
+    width: 120px;
+    vertical-align: top;
+}
+
+
+/* FIELD VALUE */
+.field-value {
+    color: #333;
+}
+
+.bio-text {
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    text-align: justify;
+    line-height: 1.6;
+}
+
+/* ========================= */
+/* PRIMARY BUTTON            */
+/* ========================= */
+
+.btn-primary {
+    display: inline-block;
+    background: linear-gradient(135deg, #feca0d, #ffd84d);
+    color: #603914;
+    padding: 1.5% 3%;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+/* EDIT BUTTON SPACING */
+.edit-btn {
+    margin-top: 3%;
+    margin-bottom: 5%;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2%);
+    background: linear-gradient(135deg, #ffd84d, #feca0d);
+}
+
+/* ========================= */
+/* SECTION DIVIDER           */
+/* ========================= */
+
+.section-divider {
+    margin: 5% 0;
+    border: none;
+    height: 1px;
+    background: #ddd;
+}
+
+/* ========================= */
+/* DASHBOARD SECTION         */
+/* ========================= */
+
+.dashboard-section {
+    margin-top: 5%;
+}
+
+/* DASHBOARD TITLE */
+.section-title {
+    text-align: center;
+    color: #603914;
+    margin-bottom: 3%;
+    font-size: 180%;
+}
+
+/* ACTIVITY BLOCK WRAPPER */
+.activity-section {
+    margin-top: 4%;
+}
+
+/* ACTIVITY TITLE */
+.activity-title {
+    margin-bottom: 2%;
+    color: #444;
+    font-size: 130%;
+    border-left: 4px solid #feca0d;
+    padding-left: 2%;
+}
+
+/* GRID OF ACTIVITY ITEMS */
+.activity-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2%;
+    padding: 2%;
+    background: #fafafa;
+    border-radius: 2%;
+    box-shadow: 0 0.3% 1% rgba(0,0,0,0.08);
+}
+
+/* ACTIVITY CARD */
+.activity-card {
+    flex: 1 1 30%;
+    min-width: 25%;
+    background: white;
+    padding: 3%;
+    border-radius: 1.5%;
+    box-shadow: 0 0.3% 1% rgba(0,0,0,0.1);
+    font-size: 100%;
+    color: #333;
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.activity-card:hover {
+    transform: translateY(-3%);
+    box-shadow: 0 0.6% 1.5% rgba(0,0,0,0.15);
+    background: #fffdf5;
+}
+
+/* EMPTY STATE */
+.empty-state {
+    color: #888;
+    font-style: italic;
+    padding: 2%;
+}
+
+/* ========================= */
+/* RESPONSIVE                */
+/* ========================= */
+
+@media (max-width: 900px) {
+    .profile-container {
+        max-width: 90%;
+    }
+
+    .activity-card {
+        flex: 1 1 100%;
+    }
+}

@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ book.title }}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/book_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="book-detail">
+
+    <div class="book-main">
+
+        <div class="book-image">
+            {% if book.image %}
+                <img src="{{ book.image.url }}" alt="{{ book.title }}">
+            {% endif %}
+        </div>
+
+        <div class="book-info">
+
+            <h1>{{ book.title }}</h1>
+
+            <p class="author">By {{ book.author }}</p>
+
+            <p class="price">€{{ book.price }}</p>
+
+            <p class="description">
+                {{ book.description }}
+            </p>
+
+            <p class="stock">
+                {% if book.stock > 0 %}
+                    In stock
+                {% else %}
+                    Out of stock
+                {% endif %}
+            </p>
+
+            {% if book.stock > 0 %}
+            <a href="{% url 'add_to_cart' book.id %}" class="add-cart-btn">
+                Add to Cart
+            </a>
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</div>
+
+<h2 class="similar-title">Similar Books</h2>
+
+<div class="carousel">
+
+    {% for b in similar_books %}
+        <a href="{% url 'book_detail' b.id %}" class="carousel-item">
+
+            <!-- COVER -->
+            <div class="carousel-image">
+                {% if b.image %}
+                    <img src="{{ b.image.url }}" alt="{{ b.title }}">
+                {% else %}
+                    <img src="{% static 'images/no-cover.png' %}" alt="No cover">
+                {% endif %}
+            </div>
+
+            <p class="carousel-title">{{ b.title }}</p>
+
+        </a>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

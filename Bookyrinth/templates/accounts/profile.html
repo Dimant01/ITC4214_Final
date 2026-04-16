@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}My Profile{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="profile-container">
+
+    <h1 class="page-title">My Profile</h1>
+
+    <!-- PROFILE INFO -->
+    <div class="profile-card">
+
+        <div class="profile-field">
+            <span class="field-label">Username:</span>
+            <span class="field-value">{{ profile.user.username }}</span>
+        </div>
+
+        <div class="profile-field">
+            <span class="field-label">Email:</span>
+            <span class="field-value">{{ profile.user.email }}</span>
+        </div>
+
+        <div class="profile-field">
+            <span class="field-label">Bio:</span>
+            <span class="field-value bio-text">
+                {{ profile.bio|default:"Not set"|linebreaksbr }}
+            </span>
+        </div>
+
+        <div class="profile-field">
+            <span class="field-label">Location:</span>
+            <span class="field-value">{{ profile.location|default:"Not set" }}</span>
+        </div>
+
+        {% if profile.birth_date %}
+        <div class="profile-field">
+            <span class="field-label">Birth Date:</span>
+            <span class="field-value">{{ profile.birth_date }}</span>
+        </div>
+        {% endif %}
+
+    </div>
+
+    <a href="{% url 'edit_profile' %}" class="btn-primary edit-btn">
+        Edit Profile
+    </a>
+
+    <hr class="section-divider">
+
+    <!-- DASHBOARD -->
+    <div class="dashboard-section">
+
+        <h2 class="section-title">📊 My Dashboard</h2>
+
+        <!-- RECENTLY VIEWED -->
+        <div class="activity-section">
+
+            <h3 class="activity-title">📖 Recently Viewed Books</h3>
+
+            <div class="activity-grid">
+                {% for a in recent_views %}
+                    <div class="activity-card">
+                        {{ a.book.title }}
+                    </div>
+                {% empty %}
+                    <p class="empty-state">No views yet</p>
+                {% endfor %}
+            </div>
+
+        </div>
+
+        <!-- CART -->
+        <div class="activity-section">
+
+            <h3 class="activity-title">🛒 Cart Activity</h3>
+
+            <div class="activity-grid">
+                {% for a in cart_actions %}
+                    <div class="activity-card">
+                        {{ a.book.title }}
+                    </div>
+                {% empty %}
+                    <p class="empty-state">No cart activity</p>
+                {% endfor %}
+            </div>
+
+        </div>
+
+        <!-- PURCHASES -->
+        <div class="activity-section">
+
+            <h3 class="activity-title">🧾 Purchases</h3>
+
+            <div class="activity-grid">
+                {% for a in purchases %}
+                    <div class="activity-card">
+                        {{ a.book.title }}
+                    </div>
+                {% empty %}
+                    <p class="empty-state">No purchases yet</p>
+                {% endfor %}
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
