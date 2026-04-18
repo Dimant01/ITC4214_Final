@@ -15,7 +15,7 @@ def manager_catalog(request):
 
     query = request.GET.get("q")
 
-    books = Book.objects.all()
+    books = Book.objects.all().order_by('title')
 
     if query:
         books = books.filter(

@@ -6,7 +6,7 @@ from django.core.paginator import Paginator
 
 def home(request):
 
-    books = Book.objects.all()
+    books = Book.objects.all().order_by('title')
 
     # =========================
     # SEARCH
