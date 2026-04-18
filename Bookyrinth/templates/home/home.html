@@ -9,6 +9,7 @@
 
 {% block extra_js %}
 <script src="{% static 'js/filters.js' %}" defer></script>
+<script src="{% static 'js/pagination.js' %}" defer></script>
 {% endblock %}
 
 {% block content %}
@@ -133,6 +134,36 @@
             </a>
 
             {% endfor %}
+
+        </div>
+
+        <!-- PAGINATION -->
+        <div class="pagination">
+
+            {% if books.has_previous %}
+            <a class="pagination-link"
+                href="?page={{ books.previous_page_number }}&{{ request.GET.urlencode|cut:'page=' }}">
+                ←
+            </a>
+            {% endif %}
+
+            {% for num in books.paginator.page_range %}
+            {% if books.number == num %}
+            <span class="pagination-current">{{ num }}</span>
+            {% else %}
+            <a class="pagination-link"
+                href="?page={{ num }}&{{ request.GET.urlencode|cut:'page=' }}">
+                {{ num }}
+            </a>
+            {% endif %}
+            {% endfor %}
+
+            {% if books.has_next %}
+            <a class="pagination-link"
+                href="?page={{ books.next_page_number }}&{{ request.GET.urlencode|cut:'page=' }}">
+                →
+            </a>
+            {% endif %}
 
         </div>
 

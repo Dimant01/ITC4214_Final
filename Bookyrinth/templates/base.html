@@ -26,6 +26,10 @@
     <!-- RIGHT SIDE (NAVIGATION) -->
      <nav class="nav-right">
 
+        <a href="{% url 'home' %}" class="nav-home">
+        Home
+        </a>
+
         <a href="{% url 'cart' %}" class="cart-icon">
             <span class="cart-symbol">🛒</span>
 
@@ -33,6 +37,7 @@
                 <span class="cart-badge">{{ cart_count }}</span>
             {% endif %}
         </a>
+
 
     <!-- BURGER MENU -->
     <div class="burger-menu">

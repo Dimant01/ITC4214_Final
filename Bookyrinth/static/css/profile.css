@@ -17,7 +17,7 @@
 }
 
 /* ========================= */
-/* PROFILE CARD             */
+/* PROFILE CARD              */
 /* ========================= */
 
 .profile-card {
@@ -26,6 +26,7 @@
     border-radius: 2%;
     box-shadow: 0 0.5% 2% rgba(0,0,0,0.12);
     transition: transform 0.2s ease;
+    margin: 2% 0;
 }
 
 .profile-card:hover {
@@ -39,6 +40,16 @@
     color: #333;
     line-height: 1.5;
 }
+
+/* EXTRA SPACE BETWEEN LOGICAL GROUPS */
+/* (simulate grouping: first field = account, rest = profile info) */
+
+.profile-field:first-of-type {
+    margin-bottom: 4%;
+    padding-bottom: 3%;
+    border-bottom: 1px solid #eee;
+}
+
 /* FIELD LABEL */
 .field-label {
     color: #603914;
@@ -48,28 +59,20 @@
     vertical-align: top;
 }
 
-
-/* FIELD VALUE */
-.field-value {
-    color: #333;
-}
-
+/* BIO TEXT */
 .bio-text {
     white-space: pre-wrap;
-    overflow-wrap: break-word;
-    word-break: break-word;
+    overflow-wrap: anywhere;
     text-align: justify;
     line-height: 1.6;
 }
 
 /* ========================= */
-/* PRIMARY BUTTON            */
+/* BUTTONS                   */
 /* ========================= */
 
-.btn-primary {
+.btn {
     display: inline-block;
-    background: linear-gradient(135deg, #feca0d, #ffd84d);
-    color: #603914;
     padding: 1.5% 3%;
     border-radius: 8px;
     font-weight: bold;
@@ -77,15 +80,34 @@
     transition: all 0.2s ease;
 }
 
-/* EDIT BUTTON SPACING */
-.edit-btn {
-    margin-top: 3%;
-    margin-bottom: 5%;
+/* PRIMARY BUTTON */
+.btn-primary {
+    background: linear-gradient(135deg, #feca0d, #ffd84d);
+    color: #603914;
 }
 
 .btn-primary:hover {
     transform: translateY(-2%);
     background: linear-gradient(135deg, #ffd84d, #feca0d);
+}
+
+/* SECONDARY BUTTON */
+.btn-secondary {
+    background: #eee;
+    color: #603914;
+}
+
+.btn-secondary:hover {
+    background: #e0e0e0;
+    transform: translateY(-2%);
+}
+
+/* PROFILE ACTION BUTTONS */
+.profile-actions {
+    display: flex;
+    gap: 2%;
+    margin-top: 3%;
+    margin-bottom: 5%;
 }
 
 /* ========================= */
@@ -150,7 +172,6 @@
     box-shadow: 0 0.3% 1% rgba(0,0,0,0.1);
     font-size: 100%;
     color: #333;
-
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -178,5 +199,133 @@
 
     .activity-card {
         flex: 1 1 100%;
+    }
+}
+
+/* ========================= */
+/* CAROUSEL WRAPPER          */
+/* ========================= */
+
+.carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 3% 0;
+}
+
+/* TRACK (scroll area) */
+.carousel-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 2%;
+    padding: 2%;
+    width: 100%;
+
+    scrollbar-width: none; /* Firefox */
+}
+
+.carousel-track::-webkit-scrollbar {
+    display: none; /* Chrome */
+}
+
+/* ITEM */
+.carousel-item {
+    flex: 0 0 auto;
+    width: 18%;
+    min-width: 18%;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* FIXED IMAGE SIZE */
+.carousel-image {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #f5f5f5;
+    box-shadow: 0 0.3% 1% rgba(0,0,0,0.1);
+}
+
+.carousel-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* TITLE */
+.carousel-title {
+    text-align: center;
+    margin-top: 5%;
+    font-size: 90%;
+}
+
+/* ========================= */
+/* ARROWS                   */
+/* ========================= */
+
+.carousel-btn {
+    background: white;
+    border: none;
+    cursor: pointer;
+
+    font-size: 200%;
+    color: #603914;
+
+    width: 4%;
+    height: 4%;
+    min-width: 35px;
+    min-height: 35px;
+
+    border-radius: 50%;
+    box-shadow: 0 0.3% 1% rgba(0,0,0,0.2);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.2s;
+}
+
+.carousel-btn:hover {
+    transform: scale(1.1);
+}
+
+.carousel-section-title {
+    margin-top: 4%;
+    margin-bottom: 1.5%;
+    font-size: 160%;
+    color: #603914;
+    font-weight: bold;
+    text-align: left;
+}
+
+.birthday-banner {
+    background: linear-gradient(135deg, #ffe08a, #ffd24d);
+    color: #603914;
+
+    padding: 2%;
+    margin: 2% auto 4%;
+    width: fit-content;
+
+    border-radius: 999px;
+
+    font-weight: bold;
+    text-align: center;
+
+    box-shadow: 0 0.3% 1% rgba(0,0,0,0.15);
+
+    animation: popIn 0.5s ease;
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
     }
 }

@@ -1,9 +1,10 @@
 from django.shortcuts import redirect, render, get_object_or_404
-from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth.decorators import user_passes_test, login_required
 from .models import Book
 from .forms import BookForm
 from django.db.models import Q
 from accounts.models import UserActivity
+from django.http import JsonResponse
 
 def is_manager(user):
     return user.is_authenticated and user.is_staff
@@ -99,4 +100,20 @@ def book_detail(request, book_id):
     return render(request, "catalog/book_detail.html", {
         "book": book,
         "similar_books": similar_books
+    })
+
+@login_required
+def toggle_like(request, book_id):
+    book = Book.objects.get(id=book_id)
+
+    if request.user in book.liked_by.all():
+        book.liked_by.remove(request.user)
+        liked = False
+    else:
+        book.liked_by.add(request.user)
+        liked = True
+
+    return JsonResponse({
+        "liked": liked,
+        "likes_count": book.liked_by.count()
     })

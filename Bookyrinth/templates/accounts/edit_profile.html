@@ -20,28 +20,43 @@
     <form method="post" class="profile-card">
         {% csrf_token %}
 
-        {% if form.errors %}
+        <!-- FORM ERRORS -->
+        {% if profile_form.errors or user_form.errors %}
             <div class="form-errors">
-                {{ form.errors }}
+                {{ profile_form.errors }}
+                {{ user_form.errors }}
             </div>
         {% endif %}
 
+        <!-- ACCOUNT SECTION -->
+        <h2 class="section-title">Account Information</h2>
+
+        <div>
+            <label>Username</label>
+            {{ user_form.username }}
+        </div>
+
+        <!-- PROFILE SECTION -->
+        <h2 class="section-title">Profile Information</h2>
+
         <div>
             <label>Bio</label>
-            {{ form.bio }}
+            {{ profile_form.bio }}
         </div>
 
         <div>
             <label>Location</label>
-            {{ form.location }}
+            {{ profile_form.location }}
         </div>
 
         <div>
             <label>Birth Date</label>
-            {{ form.birth_date }}
+            {{ profile_form.birth_date }}
         </div>
 
-        <button type="submit" class="btn-save">Save Changes</button>
+        <button type="submit" class="btn-save">
+            Save Changes
+        </button>
 
     </form>
 
@@ -49,9 +64,6 @@
         Cancel
     </a>
 
-
 </div>
-
-
 
 {% endblock %}

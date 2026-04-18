@@ -7,6 +7,11 @@
 <link rel="stylesheet" href="{% static 'css/book_detail.css' %}">
 {% endblock %}
 
+{% block extra_js %}
+<script src="{% static 'js/likes.js' %}" defer></script>
+{% endblock %}
+
+
 {% block content %}
 
 <div class="book-detail">
@@ -45,6 +50,30 @@
             </a>
             {% endif %}
 
+            
+            <!-- Like Button  -->
+            
+            {% if user.is_authenticated %}
+                <button
+                    id="like-btn"
+                    class="like-btn {% if user in book.liked_by.all %}liked{% endif %}"
+                    data-book-id="{{ book.id }}">
+                    <span class="heart">❤</span>
+                    <span class="like-text">
+                        {% if user in book.liked_by.all %}Liked{% else %}Like{% endif %}
+                    </span>
+                    <span class="like-count" id="like-count">
+                        {{ book.liked_by.count }}
+                    </span>
+                        
+
+                </button>
+            {% else %}
+                <p class="like-hint">
+                    Login to like this book
+                </p>
+            {% endif %}
+
         </div>
 
     </div>
@@ -58,7 +87,6 @@
     {% for b in similar_books %}
         <a href="{% url 'book_detail' b.id %}" class="carousel-item">
 
-            <!-- COVER -->
             <div class="carousel-image">
                 {% if b.image %}
                     <img src="{{ b.image.url }}" alt="{{ b.title }}">

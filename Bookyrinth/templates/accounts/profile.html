@@ -7,23 +7,31 @@
 <link rel="stylesheet" href="{% static 'css/profile.css' %}">
 {% endblock %}
 
+{% block extra_js %}
+<script src="{% static 'js/likes.js' %}" defer></script>
+<script src="{% static 'js/carousel.js' %}" defer></script>
+{% endblock %}
+
 {% block content %}
 
 <div class="profile-container">
 
     <h1 class="page-title">My Profile</h1>
 
+    {% if is_birthday %}
+        <div class="birthday-banner">
+            🎉 Happy Birthday, {{ profile.user.username }}! 🎂
+        </div>
+    {% endif %}
+
+    <!-- ========================= -->
     <!-- PROFILE INFO -->
+    <!-- ========================= -->
     <div class="profile-card">
 
         <div class="profile-field">
             <span class="field-label">Username:</span>
             <span class="field-value">{{ profile.user.username }}</span>
-        </div>
-
-        <div class="profile-field">
-            <span class="field-label">Email:</span>
-            <span class="field-value">{{ profile.user.email }}</span>
         </div>
 
         <div class="profile-field">
@@ -47,13 +55,106 @@
 
     </div>
 
-    <a href="{% url 'edit_profile' %}" class="btn-primary edit-btn">
-        Edit Profile
-    </a>
+    <!-- ACTION BUTTONS -->
+    <div class="profile-actions">
+
+        <a href="{% url 'edit_profile' %}" class="btn btn-primary">
+            Edit Profile
+        </a>
+
+        <a href="{% url 'password_change' %}" class="btn btn-secondary">
+            Change Password
+        </a>
+
+    </div>
 
     <hr class="section-divider">
 
+    <!-- ========================= -->
+<!-- LIKED BOOKS -->
+<!-- ========================= -->
+
+<h2 class="carousel-section-title">❤️ Liked Books</h2>
+
+<div class="carousel-wrapper">
+
+    <button class="carousel-btn left" data-target="liked-carousel">
+        ‹
+    </button>
+
+    <div class="carousel-track" id="liked-carousel">
+
+        {% for book in profile.user.liked_books.all %}
+            <a href="{% url 'book_detail' book.id %}" class="carousel-item">
+
+                <div class="carousel-image">
+                    {% if book.image %}
+                        <img src="{{ book.image.url }}" alt="{{ book.title }}">
+                    {% else %}
+                        <img src="{% static 'images/no-cover.png' %}" alt="No cover">
+                    {% endif %}
+                </div>
+
+                <p class="carousel-title">{{ book.title }}</p>
+
+            </a>
+        {% empty %}
+            <p class="empty-state">No liked books yet</p>
+        {% endfor %}
+
+    </div>
+
+    <button class="carousel-btn right" data-target="liked-carousel">
+        ›
+    </button>
+
+</div>
+
+    <!-- ========================= -->
+<!-- RECOMMENDED BOOKS -->
+<!-- ========================= -->
+
+<h2 class="carousel-section-title">📚 Recommended Books</h2>
+
+<div class="carousel-wrapper">
+
+    <button class="carousel-btn left" data-target="recommended-carousel">
+        ‹
+    </button>
+
+    <div class="carousel-track" id="recommended-carousel">
+
+        {% for book in recommended_books %}
+            <a href="{% url 'book_detail' book.id %}" class="carousel-item">
+
+                <div class="carousel-image">
+                    {% if book.image %}
+                        <img src="{{ book.image.url }}" alt="{{ book.title }}">
+                    {% else %}
+                        <img src="{% static 'images/no-cover.png' %}" alt="No cover">
+                    {% endif %}
+                </div>
+
+                <p class="carousel-title">{{ book.title }}</p>
+
+            </a>
+        {% empty %}
+            <p class="empty-state">No recommendations yet</p>
+        {% endfor %}
+
+    </div>
+
+    <button class="carousel-btn right" data-target="recommended-carousel">
+        ›
+    </button>
+
+</div>
+
+    <hr class="section-divider">
+
+    <!-- ========================= -->
     <!-- DASHBOARD -->
+    <!-- ========================= -->
     <div class="dashboard-section">
 
         <h2 class="section-title">📊 My Dashboard</h2>
