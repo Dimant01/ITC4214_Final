@@ -41,39 +41,53 @@
 
             <!-- CATEGORY FILTER -->
             <div class="filter-section">
-                <h4>Categories</h4>
 
-                {% for category in categories %}
-                <label>
-                    <input
-                        type="checkbox"
-                        name="category"
-                        value="{{ category.id }}"
-                        {% if category.id|stringformat:"s" in selected_categories %}checked{% endif %}
-                    >
-                    {{ category.name }}
-                </label>
-                <br>
+                <button type="button" class="filter-header">
+                    Categories
+                    <span class="accordion-icon">+</span>
+                </button>
+
+                <div class="filter-content">
+
+                    {% for category in categories %}
+                    <label class="checkbox-item">
+                        <input
+                            type="checkbox"
+                            name="category"
+                            value="{{ category.id }}"
+                            {% if category.id|stringformat:"s" in selected_categories %}checked{% endif %}
+                            >
+                        <span>{{ category.name }}</span>
+                    </label>
                 {% endfor %}
+
+                </div>
 
             </div>
 
             <!-- TAG FILTER -->
             <div class="filter-section">
-                <h4>Tags</h4>
 
-                {% for tag in tags %}
-                <label>
-                    <input
+                <button type="button" class="filter-header">
+                Tags
+                <span class="accordion-icon">+</span>
+                </button>
+
+                <div class="filter-content">
+
+                    {% for tag in tags %}
+                    <label class="checkbox-item">
+                        <input
                         type="checkbox"
                         name="tag"
                         value="{{ tag.id }}"
                         {% if tag.id|stringformat:"s" in selected_tags %}checked{% endif %}
-                    >
-                    {{ tag.name }}
-                </label>
-                <br>
-                {% endfor %}
+                        >
+                        <span>{{ tag.name }}</span>
+                    </label>
+                    {% endfor %}
+
+                </div>
 
             </div>
 

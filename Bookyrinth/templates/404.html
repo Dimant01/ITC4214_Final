@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Page Not Found{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/404.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="error-container">
+
+    <h1>404</h1>
+
+    <h2>Page not found</h2>
+
+    <p>
+        The page you are looking for does not exist or has been moved.
+    </p>
+
+    <a href="{% url 'home' %}" class="home-button">
+        Go back to Home
+    </a>
+
+</div>
+
+{% endblock %}
