@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 #SECRET_KEY = 'django-insecure-)3#$71vsrslt(y@284d)ktfhh0devn+-=-b!!u4726zrfl*300'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "bookyrinth.onrender.com", ".onrender.com",]
 
