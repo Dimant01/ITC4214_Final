@@ -10,6 +10,7 @@
 {% block extra_js %}
 <script src="{% static 'js/likes.js' %}" defer></script>
 <script src="{% static 'js/carousel.js' %}" defer></script>
+<script src="{% static 'js/delete_account.js' %}" defer></script>
 {% endblock %}
 
 {% block content %}
@@ -65,6 +66,13 @@
         <a href="{% url 'password_change' %}" class="btn btn-secondary">
             Change Password
         </a>
+
+        <form method="post" action="{% url 'delete_account' %}" class="delete-form">
+            {% csrf_token %}
+            <button type="button" id="deleteBtn" class="btn btn-secondary">
+                Delete Account
+            </button>
+        </form>
 
     </div>
 
@@ -208,6 +216,30 @@
                 {% endfor %}
             </div>
 
+        </div>
+
+    </div>
+
+</div>
+
+<div id="deleteModal" class="modal">
+
+    <div class="modal-content">
+        <h2>Delete Account</h2>
+
+        <p>
+            Are you sure you want to delete your account?
+            This action cannot be undone.
+        </p>
+
+        <div class="modal-actions">
+            <button id="cancelDelete" class="btn btn-secondary">
+                Cancel
+            </button>
+
+            <button id="confirmDelete" class="btn btn-primary">
+                Yes, Delete
+            </button>
         </div>
 
     </div>

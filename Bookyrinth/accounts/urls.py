@@ -8,9 +8,11 @@ urlpatterns = [
     path("logout/", views.logout_view, name="logout"),
     path("users/", views.user_management, name="user_management"),
     path("users/promote/<int:user_id>/", views.promote_user, name="promote_user"),
+    path("users/demote/<int:user_id>/", views.demote_user, name="demote_user"),
     path("users/delete/<int:user_id>/", views.delete_user, name="delete_user"),
     path("profile/", views.profile_view, name="profile"),
     path("profile/edit/", views.edit_profile, name="edit_profile"),
+    path("delete-account/", views.delete_account, name="delete_account"),
     path(
     "password_change/",
     auth_views.PasswordChangeView.as_view(

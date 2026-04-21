@@ -74,20 +74,26 @@ def promote_user(request, user_id):
     user.save()
     return redirect("user_management")
 
+@user_passes_test(is_manager)
+def demote_user(request, user_id):
+    user = get_object_or_404(User, id=user_id)
+    user.is_staff = False
+    user.save()
+    return redirect("user_management")
+
 
 @user_passes_test(is_manager)
 def delete_user(request, user_id):
     user = get_object_or_404(User, id=user_id)
 
     if user == request.user:
+        messages.warning(request, "To delete your account, please go to the profile page.")
         return redirect("user_management")
 
     if not user.is_superuser:
         user.delete()
 
     return redirect("user_management")
-
-
 # =========================
 # PROFILE VIEW
 # =========================
@@ -184,3 +190,11 @@ def edit_profile(request):
         "profile_form": profile_form,
         "user_form": user_form
     })
+
+@login_required
+def delete_account(request):
+    if request.method == "POST":
+        user = request.user
+        logout(request)
+        user.delete()
+        return redirect("home")

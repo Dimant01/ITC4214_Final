@@ -158,5 +158,5 @@ cloudinary.config(
 #CLOUDINARY_STORAGE = {
 #    'CLOUD_NAME': 'dmmmj4n9z',
 #    'API_KEY': '781289957912594',
-#   'API_SECRET': 'eZuQR1MmwfK_P6DKk1MPTRFWbcg',
+#    'API_SECRET': 'eZuQR1MmwfK_P6DKk1MPTRFWbcg',
 #}
