@@ -8,7 +8,7 @@
 
 /* --- Page background --- */
 body {
-    background-color: #fff;
+    background-color: #f9fafb;
 }
 
 /* --- Navbar --- */
@@ -17,9 +17,10 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 15px 30px;
-    background-color: #603914;
+    background-color: #1f2937;
     color: #fff;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-bottom: 1px solid #e5e7eb;
 }
 
 /* --- Logo --- */
@@ -50,7 +51,7 @@ body {
 }
 
 .nav-link:hover {
-    color: #fff;
+    color: #ffd84d;
 }
 
 /* --- Cart icon --- */
@@ -70,7 +71,7 @@ body {
 .footer {
     text-align: center;
     padding: 15px;
-    background-color: #603914;
+    background-color: #1f2937;
     color: #feca0d;
     margin-top: auto;
     position: relative;
@@ -90,14 +91,14 @@ html, body {
 .nav-right {
     display: flex;
     align-items: center;
-    gap: 25px; /* clean spacing between cart and burger */
+    gap: 25px;
 }
 
 /* Cart Icon */
 .cart-icon {
     position: relative;
     display: inline-block;
-    font-size: 162.5%; /* 26px assuming base 16px */
+    font-size: 162.5%;
     text-decoration: none;
 }
 
@@ -110,7 +111,7 @@ html, body {
     background: #e74c3c;
     color: white;
 
-    font-size: 42%; /* relative to cart icon font-size */
+    font-size: 42%;
     font-weight: bold;
 
     min-width: 70%;
@@ -156,13 +157,15 @@ html, body {
     right: 0;
     top: 120%;
 
-    background: #fff;
+    background: #ffffff;
     border-radius: 8%;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 
     min-width: 150px;
     overflow: hidden;
     z-index: 999;
+
+    border: 1px solid #e5e7eb;
 }
 
 /* SHOW ON ACTIVE */
@@ -175,13 +178,15 @@ html, body {
     display: block;
     padding: 10%;
     text-decoration: none;
-    color: #603914;
+    color: #1f2937;
     font-weight: bold;
 }
 
 .burger-link:hover {
     background: #feca0d;
 }
+
+/* Messages */
 
 .messages-container {
     width: 100%;
@@ -249,7 +254,7 @@ html, body {
 .nav-home:hover {
 
     background: #feca0d;
-    color: #603914;
+    color: #1f2937;
 
     transform: translateY(-5%);
 }

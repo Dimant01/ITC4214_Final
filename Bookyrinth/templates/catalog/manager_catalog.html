@@ -60,8 +60,10 @@ Search
 
 <td>€{{ book.price }}</td>
 
-<td class="{% if book.stock < 5 %}low-stock{% endif %}">
-{{ book.stock }}
+<td>
+    <span class="{% if book.stock < 5 %}low-stock{% endif %}">
+        {{ book.stock }}
+    </span>
 </td>
 
 <td>

@@ -1,4 +1,3 @@
-
 /* ========================= */
 /* USER TABLE               */
 /* ========================= */
@@ -7,6 +6,7 @@
     width: 90%;
     margin: 30px auto;
     border-collapse: collapse;
+    table-layout: fixed;
     background: white;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     border-radius: 10px;
@@ -14,17 +14,28 @@
     border: 1px solid #e5e7eb;
 }
 
+/* CELL BASE */
 .user-table th,
 .user-table td {
     padding: 12px;
     text-align: left;
     border-bottom: 1px solid #e5e7eb;
+
+    /* IMPORTANT: allow readability */
+    white-space: normal;
+    word-break: break-word;
 }
 
 /* HEADER */
 .user-table th {
     background: #1f2937;
     color: #feca0d;
+}
+
+/* ACTION COLUMN WIDTH */
+.user-table td.user-actions,
+.user-table th:nth-child(4) {
+    width: 220px;
 }
 
 /* ========================= */
@@ -34,6 +45,7 @@
 .user-actions {
     display: flex;
     gap: 10px;
+    align-items: center;
 }
 
 /* BASE ACTION STYLE */
@@ -42,21 +54,30 @@
     text-decoration: none;
     padding: 6px 10px;
     border-radius: 6px;
-    transition: all 0.2s ease;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 90px;
+    flex-shrink: 0;
+    box-sizing: border-box;
 }
 
-/* PROMOTE BUTTON */
-.user-promote {
+/* PROMOTE / DEMOTE */
+.user-promote,
+.user-demote {
     color: #1f2937;
     background: #feca0d;
 }
 
-.user-promote:hover {
+.user-promote:hover,
+.user-demote:hover {
     background: #ffd84d;
     transform: translateY(-2%);
 }
 
-/* DELETE BUTTON */
+/* DELETE */
 .user-delete {
     color: white;
     background: #e74c3c;
@@ -65,4 +86,23 @@
 .user-delete:hover {
     background: #c0392b;
     transform: translateY(-2%);
+}
+
+/* ========================= */
+/* MOBILE                   */
+/* ========================= */
+
+@media (max-width: 900px) {
+
+    .user-table th,
+    .user-table td {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .user-action {
+        width: 70px;
+        padding: 5px 6px;
+        font-size: 12px;
+    }
 }

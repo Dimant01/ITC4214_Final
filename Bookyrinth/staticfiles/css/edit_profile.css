@@ -9,7 +9,7 @@
 .profile-container h1 {
     text-align: center;
     margin-bottom: 3%;
-    color: #603914;
+    color: #1f2937;
     font-size: 200%;
 }
 
@@ -22,12 +22,13 @@
     display: flex;
     flex-direction: column;
     gap: 3%;
+    border: 1px solid #e5e7eb;
 }
 
 /* LABELS */
 .profile-card label {
     font-weight: bold;
-    color: #603914;
+    color: #1f2937;
     margin-bottom: 1%;
     display: block;
 }
@@ -37,32 +38,33 @@
 .profile-card textarea {
     width: 100%;
     padding: 2%;
-    border: 1px solid #ddd;
+    border: 1px solid #d1d5db;
     border-radius: 6px;
     font-size: 100%;
     outline: none;
-    transition: border 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 /* FOCUS STATE */
 .profile-card input:focus,
 .profile-card textarea:focus {
     border-color: #feca0d;
+    box-shadow: 0 0 0 3px rgba(254,202,13,0.25);
 }
 
-/* BUTTON */
+/* SAVE BUTTON */
 .btn-save {
     width: 100%;
     padding: 3% 4%;
     margin-top: 3%;
     background: linear-gradient(135deg, #feca0d, #ffd84d);
-    color: #603914;
+    color: #1f2937;
     border: none;
     border-radius: 6px;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.2s ease;
-    font-size: 120%; 
+    font-size: 120%;
 }
 
 .btn-save:hover {
@@ -76,14 +78,17 @@
     text-align: center;
     width: 100%;
     padding: 2%;
-    background: #eee;
-    color: #333;
+    background: #fff;
+    color: #1f2937;
     border-radius: 6px;
     text-decoration: none;
+    border: 2px solid #1f2937;
+    transition: all 0.2s ease;
 }
 
 .btn-cancel:hover {
-    background: #ddd;
+    background: #1f2937;
+    color: #fff;
 }
 
 /* ERROR BOX */
@@ -93,5 +98,5 @@
     padding: 2%;
     border-radius: 6px;
     margin-bottom: 3%;
+    border: 1px solid #f5c2c2;
 }
-

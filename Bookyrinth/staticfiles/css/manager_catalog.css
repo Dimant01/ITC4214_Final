@@ -1,3 +1,4 @@
+
 /* --- Manager page wrapper --- */
 .manager-container {
     width: 90%;
@@ -6,7 +7,7 @@
 
 /* --- Page title --- */
 .manager-title {
-    color: #603914;
+    color: #1f2937;
     margin-bottom: 2%;
 }
 
@@ -16,15 +17,16 @@
     margin-bottom: 2%;
     padding: 0.8% 1.6%;
     background-color: #feca0d;
-    color: #603914;
+    color: #1f2937;
     font-weight: bold;
     text-decoration: none;
     border-radius: 6px;
-    transition: background-color 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 .manager-add-button:hover {
     background-color: #ffd84d;
+    transform: translateY(-2%);
 }
 
 /* --- Table layout --- */
@@ -34,11 +36,12 @@
     background-color: #ffffff;
     border-radius: 8px;
     overflow: hidden;
+    border: 1px solid #e5e7eb;
 }
 
 /* --- Header row --- */
 .catalog-table thead {
-    background-color: #603914;
+    background-color: #1f2937;
     color: #feca0d;
 }
 
@@ -50,17 +53,18 @@
 /* --- Table cells --- */
 .catalog-table td {
     padding: 1%;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e7eb;
+    color: #1f2937;
 }
 
 /* --- Zebra striping --- */
 .catalog-table tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: #f9fafb;
 }
 
 /* --- Hover effect --- */
 .catalog-table tbody tr:hover {
-    background-color: #fff5cc;
+    background-color: #fff8dc;
 }
 
 /* --- Action links --- */
@@ -102,7 +106,7 @@
     flex: 1;
     padding: 8px;
     border-radius: 6px;
-    border: 1px solid #ccc;
+    border: 1px solid #d1d5db;
 }
 
 .manager-search-button {
@@ -112,6 +116,7 @@
     border-radius: 6px;
     font-weight: bold;
     cursor: pointer;
+    color: #1f2937;
 }
 
 .manager-search-button:hover {
@@ -157,12 +162,13 @@
     text-align: center;
 
     box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    border: 1px solid #e5e7eb;
 }
 
 /* TITLE */
 
 .modal-title {
-    color: #603914;
+    color: #1f2937;
     margin-bottom: 15px;
 }
 
@@ -170,6 +176,7 @@
 
 #modal-text {
     margin-bottom: 25px;
+    color: #374151;
 }
 
 /* BUTTON CONTAINER */
@@ -177,16 +184,25 @@
 .modal-buttons {
     display: flex;
     justify-content: space-between;
+    gap: 10px;
 }
 
 /* CANCEL BUTTON */
 
 .modal-cancel {
     padding: 8px 18px;
-    border: none;
+    border: 2px solid #1f2937;
     border-radius: 6px;
-    background: #ccc;
+    background: white;
+    color: #1f2937;
     cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+.modal-cancel:hover {
+    background: #1f2937;
+    color: white;
 }
 
 /* DELETE BUTTON */
@@ -200,6 +216,7 @@
     text-decoration: none;
 
     font-weight: bold;
+    transition: all 0.2s ease;
 }
 
 .modal-delete:hover {

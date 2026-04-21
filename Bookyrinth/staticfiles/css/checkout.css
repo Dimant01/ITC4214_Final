@@ -24,10 +24,11 @@
     padding: 25px;
 
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e5e7eb;
 }
 
 .order-summary h2 {
-    color: #603914;
+    color: #1f2937;
     margin-bottom: 15px;
 }
 
@@ -44,7 +45,8 @@
     justify-content: space-between;
     margin-top: 15px;
     font-size: 16px;
-    color: #603914;
+    color: #1f2937;
+    font-weight: bold;
 }
 
 /* =========================
@@ -62,7 +64,7 @@
 /* Section spacing */
 .checkout-form h2 {
     margin-top: 10px;
-    color: #603914;
+    color: #1f2937;
 }
 
 /* =========================
@@ -75,16 +77,25 @@
 .checkout-form select {
     width: 100%;
     padding: 12px;
-    border: 1px solid #ddd;
+    border: 1px solid #d1d5db;
     border-radius: 10px;
     font-size: 15px;
     margin-top: 5px;
 }
 
+/* Focus state */
+.checkout-form input:focus,
+.checkout-form textarea:focus,
+.checkout-form select:focus {
+    outline: none;
+    border-color: #feca0d;
+    box-shadow: 0 0 0 3px rgba(254,202,13,0.25);
+}
+
 /* Labels */
 .checkout-form label {
     font-weight: bold;
-    color: #333;
+    color: #1f2937;
     display: block;
     margin-top: 10px;
 }
@@ -103,7 +114,7 @@
     padding: 15px;
     border-radius: 12px;
     background: #fafafa;
-    border: 1px solid #e6e6e6;
+    border: 1px solid #e5e7eb;
 
     display: flex;
     flex-direction: column;
@@ -140,21 +151,23 @@
 }
 
 /* Cancel */
+
 .btn-cancel {
     background: #fff;
-    color: #603914;
-    border: 2px solid #603914;
+    color: #1f2937;
+    border: 2px solid #1f2937;
 }
 
 .btn-cancel:hover {
-    background: #603914;
+    background: #1f2937;
     color: #fff;
 }
 
 /* Confirm */
+
 .btn-confirm {
     background: linear-gradient(135deg, #feca0d, #ffd84d);
-    color: #603914;
+    color: #1f2937;
 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }

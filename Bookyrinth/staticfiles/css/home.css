@@ -13,7 +13,6 @@
     overflow: hidden;
     box-shadow: 0 0.5% 1.5% rgba(0,0,0,0.1);
     transition: transform 0.2s ease;
-
     display: flex;
     flex-direction: column;
     max-width: 500px;
@@ -55,11 +54,12 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
 /* TITLE */
 .book-title {
     font-size: 120%;
     margin: 0;
-    color: #603914;
+    color: #1f2937;
 
     white-space: nowrap;
     overflow: hidden;
@@ -90,7 +90,7 @@
     margin-top: 5%;
 
     background: linear-gradient(135deg, #feca0d, #ffd84d);
-    color: #603914;
+    color: #1f2937;
 
     border: none;
     border-radius: 8%;
@@ -118,8 +118,9 @@
     box-shadow: 0 0.3% 0.8% rgba(0, 0, 0, 0.15);
 }
 
+/* FILTER BOX */
 .filter-box {
-    background: #603914;
+    background: #1f2937;
     padding: 2%;
     margin: 2%;
     border-radius: 1%;
@@ -145,7 +146,6 @@
 }
 
 /* SIDEBAR */
-
 .filter-sidebar {
     width: 20%;
     background: white;
@@ -154,13 +154,11 @@
 }
 
 /* MAIN CONTENT */
-
 .catalog-content {
     width: 80%;
 }
 
 /* FILTER SECTIONS */
-
 .filter-section {
     margin-bottom: 10%;
 }
@@ -170,7 +168,6 @@
 }
 
 /* MOBILE FILTER BUTTON */
-
 .filter-toggle {
     display: none;
 }
@@ -178,12 +175,11 @@
 @media (max-width: 900px) {
 
     .book-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
-    gap: 2%;
-    padding: 3%;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
+        gap: 2%;
+        padding: 3%;
     }
-
 
     .catalog-layout {
         flex-direction: column;
@@ -198,7 +194,6 @@
         background: white;
         z-index: 1000;
         transition: left 0.3s ease;
-
         overflow-y:auto;
         -webkit-overflow-scrolling: touch;
     }
@@ -216,7 +211,6 @@
         font-weight: bold;
         cursor: pointer;
     }
-
 }
 
 .global-search-wrapper{
@@ -225,7 +219,7 @@
     margin:2% 0;
 }
 
-/* the actual search bar */
+/* search bar */
 .global-search-form{
     display:flex;
     width:50%;
@@ -276,16 +270,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
     text-decoration: none;
     padding: 1% 2%;
     background: #feca0d;
-    color: #603914;
+    color: #1f2937;
     border-radius: 2%;
     transition: 0.2s;
 
     margin-top: 1%;
-    margin-bottom: 1%
+    margin-bottom: 1%;
 }
 
 .pagination-link:hover {
@@ -295,7 +289,75 @@
 
 .pagination-current {
     padding: 1% 2%;
-    background: #603914;
+    background: #1f2937;
     color: white;
     border-radius: 2%;
+}
+
+/* Accordion */
+.filter-header {
+    width: 100%;
+    background: none;
+    border: none;
+    font-weight: bold;
+    font-size: 110%;
+    color: white;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    cursor: pointer;
+    padding: 5% 0;
+}
+
+.filter-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.filter-section.open .accordion-icon {
+    transform: rotate(45deg);
+}
+
+.accordion-icon {
+    font-size: 120%;
+    transition: transform 0.3s;
+}
+
+/* Filter menu elements */
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 3%;
+    margin: 3% 0;
+    cursor: pointer;
+    color: white;
+}
+
+.checkbox-item input {
+    appearance: none;
+
+    width: 1em;
+    height: 1em;
+
+    border: 12% solid #feca0d;
+    border-radius: 20%;
+
+    cursor: pointer;
+    position: relative;
+}
+
+.checkbox-item input:checked {
+    background: #feca0d;
+}
+
+.checkbox-item input:checked::after {
+    content: "✓";
+    position: absolute;
+    color: #1f2937;
+    font-size: 75%;
+    left: 15%;
+    top: -20%;
 }

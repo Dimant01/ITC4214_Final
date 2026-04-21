@@ -20,3 +20,28 @@ document.addEventListener("click", function (event) {
         sidebar.classList.remove("active");
     }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const headers = document.querySelectorAll(".filter-header");
+
+    headers.forEach(header => {
+
+        header.addEventListener("click", function () {
+
+            const section = header.parentElement;
+            const content = section.querySelector(".filter-content");
+
+            section.classList.toggle("open");
+
+            if (section.classList.contains("open")) {
+                content.style.maxHeight = content.scrollHeight + "px";
+            } else {
+                content.style.maxHeight = null;
+            }
+
+        });
+
+    });
+
+});
