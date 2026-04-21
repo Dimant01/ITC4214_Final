@@ -23,8 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-#SECRET_KEY = os.environ.get("SECRET_KEY") 
-SECRET_KEY = 'django-insecure-)3#$71vsrslt(y@284d)ktfhh0devn+-=-b!!u4726zrfl*300'
+SECRET_KEY = os.environ.get("SECRET_KEY") 
+#SECRET_KEY = 'django-insecure-)3#$71vsrslt(y@284d)ktfhh0devn+-=-b!!u4726zrfl*300'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -151,14 +151,14 @@ DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#CLOUDINARY_STORAGE = {
-#    "CLOUD_NAME": os.environ.get("CLOUDINARY_CLOUD_NAME"),
-#    "API_KEY": os.environ.get("CLOUDINARY_API_KEY"),
-#    "API_SECRET": os.environ.get("CLOUDINARY_API_SECRET"),
-#}
-
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dmmmj4n9z',
-    'API_KEY': '781289957912594',
-    'API_SECRET': 'eZuQR1MmwfK_P6DKk1MPTRFWbcg',
+    "CLOUD_NAME": os.environ.get("CLOUDINARY_CLOUD_NAME"),
+    "API_KEY": os.environ.get("CLOUDINARY_API_KEY"),
+    "API_SECRET": os.environ.get("CLOUDINARY_API_SECRET"),
 }
+
+#CLOUDINARY_STORAGE = {
+#    'CLOUD_NAME': 'dmmmj4n9z',
+#    'API_KEY': '781289957912594',
+#    'API_SECRET': 'eZuQR1MmwfK_P6DKk1MPTRFWbcg',
+#}
