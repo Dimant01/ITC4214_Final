@@ -41,12 +41,13 @@
 <td class="user-actions">
 
     {% if not u.is_staff %}
-        <a href="{% url 'promote_user' u.id %}" class="user-action user-promote">
-            Promote
-        </a>
+    <a href="{% url 'promote_user' u.id %}" class="user-action user-promote">
+        Promote
+    </a>
 
-    {% else %} <a href="{% url 'demote_user' u.id %}" class="user-action user-demote">
-             Demote 
+    {% elif not u.is_superuser %}
+        <a href="{% url 'demote_user' u.id %}" class="user-action user-demote">
+            Demote 
         </a>
     {% endif %}
 
